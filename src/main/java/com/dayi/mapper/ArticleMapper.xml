@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dayi.mapper.ArticleMapper">
+	<insert id="editArticle" parameterType="Article">
+		insert into article values(#{art_id},#{art_title},#{art_tags},#{art_pic},#{art_intro},#{art_content},#{copy_url})
+	</insert>
+
+	<delete id="deleteArticle" parameterType="String">
+		delete from article where art_id=#{art_id}
+	</delete>
+	
+	<update id="updateArticle" parameterType="Article">
+		update article
+		set
+			art_id =  #{art_id},
+			art_title =  #{art_title},
+			art_tags =  #{art_tags},
+			art_pic =  #{art_pic},
+			art_intro =  #{art_intro},
+			art_content =  #{art_content},
+			copy_url =  #{copy_url}
+		where art_id=#{art_id}
+		
+	</update>
+	
+	<select id="getArticle" parameterType="String" resultType="Article">
+		selete * from article where  art_id=#{art_id}
+	</select>
+	
+	<select id="getAllArticle" resultType="Article">
+		selete * from article
+	</select>
+</mapper>
