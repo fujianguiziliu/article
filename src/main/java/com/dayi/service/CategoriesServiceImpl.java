@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 import com.dayi.entity.Article;
 import com.dayi.entity.Categories;
 import com.dayi.mapper.ArticleMapper;
+import com.dayi.mapper.CategoriesMapper;
 
 
 @Service
-public class ArticleServiceImpl implements ArticleService {
+public class CategoriesServiceImpl implements CategoriesService {
 
 	@Autowired
+	CategoriesMapper categoriesMapper;
+	/*@Autowired
 	ArticleMapper articleMapper;
 	
 	
@@ -45,18 +48,18 @@ public class ArticleServiceImpl implements ArticleService {
 	public Article getArticle(int art_id) {
 		return articleMapper.getArticle(art_id);
 	}
+*/
 
 	@Override
-	public List<Article> get_ContentOrTitle(String cate_id) {
-		return articleMapper.get_ContentOrTitle(cate_id);
+	public Categories getSome(int cate_id) {
+		return categoriesMapper.getSome(cate_id);
 	}
 
 	@Override
-	public Article getContent(String art_id) {
-		return articleMapper.getContent(art_id);
+	public List<Categories> getAllCategories() {
+		return categoriesMapper.getAllCategories();
 	}
 
-	
 
 	
 //	@Override
@@ -64,6 +67,10 @@ public class ArticleServiceImpl implements ArticleService {
 //		return articleMapper.getArticle(cate_id);
 //	}
 
+	
+	
+	
+	
 	
 
 	

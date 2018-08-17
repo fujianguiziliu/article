@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dayi.mapper.ArticleMapper">
+<mapper namespace="com.dayi.mapper.CategoriesMapper">
 
 	<!-- <resultMap type="com.dayi.entity.Article" id="art_id">
-		<id property="art_id"  column="art_id"/>
+		<id property="aid"  column="art_id"/>
 		<result property="art_pic" column="art_pic"/>
-		<result property="art_content" column="art_content"/>
-		<association property="cate_id" column="cate_id"  select="get_cateid">
-			<id property="art_id" column="art_id"/>
-			<result property="cate_id" column="cate_id"/>
+		<result property="cate_id" column="cate_id"/>
+		<association property="cate" column="cate_id"  select="get_cateid">
+			<id property="cate_id" column="cate_id"/>
+			<result property="cate" column="cate"/>
 		</association>
-	</resultMap>
-	<select id="get_cateid" parameterType="Article" resultType="com.dayi.entity.Categories">
-		select art_pic,art_content from article where cate_id=#{cate_id} 
-	</select> -->
+	</resultMap> -->
+	<!-- <select id="get_cateid" parameterType="Integer" resultType="com.dayi.entity.Categories">
+		select cate_id,cate_name from categories where cate_id=#{cate_id}
+	</select> --> 
 	<!-- <select id="getArticle" parameterType="Integer" resultType="Article">
 		select art_title,art_pic from article where  art_id=#{art_id}
 	</select> -->
 	
-	
+	<!-- <select id="getSome" parameterType="Integer" resultType="Categories">
+		select cate_name from categories where  cate_id=#{cate_id}
+	</select> -->
+	<select id="getAllCategories" resultType="Categories">
+		select cate_id,cate_name,cate_img from categories 
+	</select>
 	<!-- 
 	<insert id="editArticle" parameterType="Article">
 		insert into article values(#{art_id},#{art_title},#{art_tags},#{art_pic},#{art_intro},#{art_content},#{copy_url})
@@ -50,20 +55,4 @@
 	<select id="getAllArticle" resultType="Article">
 		select * from article
 	</select> -->
-	
-	
-	
-	
-	<select id="get_ContentOrTitle" resultType="Article">
-		select art_id,art_pic,art_title from article where cate_id=#{cate_id}
-	</select>
-	
-	<select id="getContent" resultType="Article">
-		select art_content from article where art_id=#{art_id} 
-		
-	</select>
-	
-	
-	
-	
 </mapper>
